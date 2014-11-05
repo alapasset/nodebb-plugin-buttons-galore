@@ -71,5 +71,23 @@ $('document').ready(function() {
 				controls.updateTextareaSelection(textarea, selectionStart + 2, selectionEnd + 2);
 			}
 		});
+		composer.addButton('fa icon-text-heigh', function(textarea, selectionStart, selectionEnd) {
+			if(selectionStart === selectionEnd){
+				controls.insertIntoTextarea(textarea, '# Insert Title 1 Here');
+				controls.updateTextareaSelection(textarea, selectionStart + 2, selectionEnd + 18);
+			} else {
+				controls.wrapSelectionInTextareaWith(textarea, '# ','');
+				controls.updateTextareaSelection(textarea, selectionStart + 2, selectionEnd + 2);
+			}
+		});
+		composer.addButton('fa icon-text-heigh', function(textarea, selectionStart, selectionEnd) {
+			if(selectionStart === selectionEnd){
+				controls.insertIntoTextarea(textarea, '## Insert Title 2 Here');
+				controls.updateTextareaSelection(textarea, selectionStart + 2, selectionEnd + 18);
+			} else {
+				controls.wrapSelectionInTextareaWith(textarea, '## ','');
+				controls.updateTextareaSelection(textarea, selectionStart + 2, selectionEnd + 2);
+			}
+		});
 	});
 });
