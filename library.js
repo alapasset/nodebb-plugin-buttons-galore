@@ -1,10 +1,7 @@
 "use strict";
 
 var plugin = {};
-
 plugin.parse = function(postContent, callback) {
-
-	//console.log(postContent);
 
 	postContent = postContent
 
@@ -19,9 +16,14 @@ plugin.parse = function(postContent, callback) {
 			//Text align center
 			.replace(/[^`]?<p>=&gt;((?:.|\n)*?)&lt;=<\/p>/gm,'<p class="text-justify">$1</p>')
 			//Underlined text.
-			.replace(/[^`]?~((?:.|\n)*?)~/g, "<u>$1</u>");
-
-	callback(null, postContent);
+			.replace(/[^`]?~((?:.|\n)*?)~/g, "<u>$1</u>")
+            //Spoiler
+            .replace(/<p>! *([\S\s]*?)<\/p>/gm, '</blockquote><blockquote class="spoiler"><p>$1</p></blockquote><blockquote>')
+            .replace(/<blockquote>\s*<\/blockquote>/g, '')
+            //Color
+            .replace(/%\((#(?:[A-Fa-f0-9]{3}(?:[A-Fa-f0-9]{3})?)|(?:rgb\(\d{1,3},\d{1,3},\d{1,3}\))|(?:[a-z]){3,})\)\[(.+?)\]/g, '<font style="color:$1">$2</font>');
+    callback(null, postContent);
 };
 
 module.exports = plugin;
+

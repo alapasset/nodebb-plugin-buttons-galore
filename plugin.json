@@ -7,8 +7,17 @@
 	"hooks": [
 		{ "hook": "filter:post.parse", "method": "parse", "callbacked": true, "priority": 10 }
 	],
-
-        "scripts": [
-		"./buttons.js"
-	]
+    "staticDirs": {
+        "images": "lib/colorpicker/images"
+    },
+    "scripts": [
+		"./src/buttons.js",
+		"./lib/colorpicker/js/colorpicker.js",
+		"./lib/dropdown/js/dropdown.js"
+	],
+    "less": [
+        "./src/buttons.less",
+        "./lib/colorpicker/css/colorpicker.less",
+        "./lib/dropdown/css/dropdown.less"
+    ]
 }
